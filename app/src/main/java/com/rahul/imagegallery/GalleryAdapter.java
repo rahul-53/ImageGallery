@@ -1,6 +1,7 @@
 package com.rahul.imagegallery;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.LabeledIntent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,9 +19,9 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryV
 
      private Context context;
      private List<String>  imageList;
-     public ClickListener clickListener;
+    public ClickListener clickListener;
 
-    public GalleryAdapter(Context context, List<String> imageList, ClickListener clickListener) {
+    public GalleryAdapter(Context context, List<String> imageList) {
         this.imageList=imageList;
         this.clickListener = clickListener;
         this.context=context;
@@ -38,13 +39,16 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryV
         String image =  imageList.get(position);
 
         Glide.with(context).load(image).into(holder.imageView);
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+ /* holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickListener.onClick(image);
+            Intent intent = new Intent(context,DisplayImageActivity.class);
+
+
             }
-        });
+
+        });*/
+
     }
 
     @Override
@@ -58,6 +62,12 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryV
         public GalleryViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.ivImages);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    clickListener.onClick(getAdapterPosition());
+                }
+            });
         }
     }
 }

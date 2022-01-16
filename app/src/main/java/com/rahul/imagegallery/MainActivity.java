@@ -25,11 +25,10 @@ public class MainActivity extends AppCompatActivity {
         mBtnVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent imgIntent = new Intent(MainActivity.this,GalleryActivity.class);
-                startActivity(imgIntent);
+                Intent vidIntent = new Intent(MainActivity.this,VideosActivity.class);
+                startActivity(vidIntent);
             }
         });
-
     }
 
     private void initView(){

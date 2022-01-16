@@ -19,7 +19,7 @@ public class Gallery {
 
          String[] showcase = {MediaStore.MediaColumns.DATA,MediaStore.Images.Media.BUCKET_DISPLAY_NAME};
 
-         String order = MediaStore.Video.Media.DEFAULT_SORT_ORDER;
+         String order = MediaStore.Images.Media.DEFAULT_SORT_ORDER;
 
          cursor = context.getContentResolver().query( uri, showcase, null,null,order);
          column_idx = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA);
